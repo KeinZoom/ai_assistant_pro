@@ -1,17 +1,5 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
 import "./globals.css";
-
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -25,10 +13,36 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className="min-h-screen flex flex-col">
+        <header className="flex flex-row items-center justify-between bg-gray-100 sticky top-0 p-4">
+          <ul className="flex flex-row gap-16 items-center justify-end font-semibold">
+            <li>Home</li>
+            <li>Products</li>
+            <li>About</li>
+          </ul>
+          <div className="bg-white rounded p-2 w-32 text-#1d1d1d text-center font-bold hover:bg-blue-700 hover:text-white">
+            Get Started
+          </div>
+        </header>
         {children}
+        <footer className="bg-gray-100">
+          <div className="flex flex-row items-start justify-end gap-32 p-4">
+            <div className="flex flex-col text-left justify-start p-4">
+              <h3 className="font-semibold">Products</h3>
+              <ul>
+                <li>Summarize Text</li>
+                <li>Analyze Sentiment</li>
+                <li>Extract Keywords</li>
+              </ul>
+            </div>
+            <div className="flex flex-col text-left justify-start p-4">
+              <h3 className="font-semibold">About</h3>
+              <ul>
+                <li>Author</li>
+              </ul>
+            </div>
+          </div>
+        </footer>
       </body>
     </html>
   );
