@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -13,20 +14,30 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="min-h-screen flex flex-col">
-        <header className="flex flex-row items-center justify-between bg-gray-100 sticky top-0 p-4">
+      <body className="min-h-screen flex flex-col bg-slate-900 text-slate-300">
+        <header
+          className="flex flex-row items-center justify-between bg-slate-900 sticky top-0 p-4 mb-6 shadow-lg"
+          style={{ zIndex: "1" }}
+        >
           <ul className="flex flex-row gap-16 items-center justify-end font-semibold">
-            <li>Home</li>
-            <li>Products</li>
+            <li>
+              <Link href="/">Home</Link>
+            </li>
+            <li>
+              <Link href="/products">Products</Link>
+            </li>
             <li>About</li>
           </ul>
-          <div className="bg-white rounded p-2 w-32 text-#1d1d1d text-center font-bold hover:bg-blue-700 hover:text-white">
+          <Link
+            href="/products"
+            className="bg-slate-700 rounded p-2 w-32 text-blue-200 text-center font-bold hover:bg-blue-700 hover:text-white"
+          >
             Get Started
-          </div>
+          </Link>
         </header>
         {children}
-        <footer className="bg-gray-100">
-          <div className="flex flex-row items-start justify-end gap-32 p-4">
+        <footer className="shadow-lg">
+          <div className="flex flex-row items-start justify-end gap-32 p-4 mt-8">
             <div className="flex flex-col text-left justify-start p-4">
               <h3 className="font-semibold">Products</h3>
               <ul>
@@ -41,6 +52,9 @@ export default function RootLayout({
                 <li>Author</li>
               </ul>
             </div>
+          </div>
+          <div className="mt-2 p-4 text-center font-medium">
+            &copy;copyright reserved by KAI
           </div>
         </footer>
       </body>
