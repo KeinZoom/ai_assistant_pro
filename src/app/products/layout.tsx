@@ -26,7 +26,7 @@ export default function ProductsLayout({
 }) {
   const pathName = usePathname();
   return (
-    <div className="flex flex-row items-start justify-start min-h-screen">
+    <div className="flex flex-row items-stretch justify-start min-h-screen">
       <nav className="flex flex-col mb-4 w-3/12 space-y-2 shadow-lg">
         {tabItems.map((item) => (
           <Link

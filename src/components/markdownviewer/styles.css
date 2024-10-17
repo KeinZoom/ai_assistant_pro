@@ -1,0 +1,19 @@
+.markdown-container {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+}
+.markdown-container h1 {
+  font-size: 2em;
+  margin-bottom: 0.5em;
+}
+.markdown-container p {
+  margin-bottom: 1em;
+}
+.markdown-container ul {
+  list-style: disc;
+}
+.markdown-container code {
+  background-color: #f4f4f4;
+  padding: 2px 4px;
+  border-radius: 4px;
+}
