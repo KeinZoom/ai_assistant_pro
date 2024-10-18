@@ -10,7 +10,6 @@ request.interceptors.request.use(
     const reqHeader = config.headers;
     // 注入API key
     reqHeader?.setAuthorization("Bearer app-QE81m9bsAZmPomWk7ZDmUw4V");
-    console.log(config);
     return config;
   },
   (error) => {
@@ -20,7 +19,6 @@ request.interceptors.request.use(
 
 request.interceptors.response.use(
   (config) => {
-    console.log(config);
     return config;
   },
   (error) => {
@@ -29,4 +27,3 @@ request.interceptors.response.use(
 );
 
 export default request;
-
