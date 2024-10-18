@@ -1,7 +1,5 @@
 "use client";
-import React, { HtmlHTMLAttributes, Suspense, useState } from "react";
-import request from "@/utils/http";
-import MarkdownViewer from "@/components/markdownviewer/MarkdownViewer";
+import React, {Suspense, useState } from "react";
 import classNames from "classnames";
 import Answer from "@/components/answer/Answer";
 import LoadingPage from "../loading";
@@ -18,7 +16,7 @@ export default function ProductPage({
 }) {
   const [inputText, setInputText] = useState<string>("");
   const [answer, setAnswer] = useState<string>("");
-  const [loading, setLoading] = useState<Boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
   const productType = params.pType;
 
   if (
@@ -65,9 +63,9 @@ export default function ProductPage({
     }
   };
 
-  const autoResize = (e) => {
-    e.target.style.height = "auto";
-    e.target.style.height = e.target.scrollHeight + "px";
+  const autoResize = (e: React.FormEvent<HTMLTextAreaElement>) => {
+    e.currentTarget.style.height = "auto";
+    e.currentTarget.style.height = e.currentTarget.scrollHeight + "px";
   };
 
   const handleEnter = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
