@@ -10,8 +10,8 @@ export default function Answer({
   answer: string;
 }) {
   return (
-    <div className="mt-6 max-w-2xl p-8 rounded-lg shadow bg-slate-700 relative">
-      <h2 className="text-2xl font-bold mb-4">Summary:</h2>
+    <div className="mt-6 max-w-2xl p-8 rounded-lg shadow bg-slate-700 relative w-full">
+      <h2 className="text-2xl font-bold mb-4">Answer:</h2>
       <div className="flex flex-row space-x-4 absolute top-8 right-8">
         <svg
           xmlns="http://www.w3.org/2000/svg"

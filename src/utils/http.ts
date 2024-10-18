@@ -7,9 +7,6 @@ const request = axios.create({
 
 request.interceptors.request.use(
   (config) => {
-    const reqHeader = config.headers;
-    // 注入API key
-    reqHeader?.setAuthorization("Bearer app-QE81m9bsAZmPomWk7ZDmUw4V");
     return config;
   },
   (error) => {

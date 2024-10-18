@@ -6,6 +6,8 @@ import classNames from "classnames";
 import Answer from "@/components/answer/Answer";
 import LoadingPage from "../loading";
 import { getAnswer, ResType } from "@/apis/getAnswer";
+import productIndex from "../productIndex";
+import PageNotFound from "@/app/not-found";
 
 export default function ProductPage({
   params,
@@ -19,6 +21,13 @@ export default function ProductPage({
   const [loading, setLoading] = useState<Boolean>(false);
   const productType = params.pType;
 
+  if (
+    productIndex.findIndex((item) => item.pathName.startsWith(productType)) ===
+    -1
+  ) {
+    return <PageNotFound />;
+  }
+
   const handleSummarize = async () => {
     if (!inputText) {
       throw new Error("Input area is empty... Please enter the content.");
@@ -27,9 +36,15 @@ export default function ProductPage({
 
     try {
       setLoading(true);
+      setAnswer("");
       const data: ResType = await getAnswer({
         inputText: inputText,
-        path: "/completion-messages",
+        path:
+          productIndex.find((item) => item.pathName.startsWith(productType))
+            ?.remotePath || "",
+        pKey:
+          productIndex.find((item) => item.pathName.startsWith(productType))
+            ?.pKey || "",
       });
       if (data) {
         setLoading(false);
@@ -59,7 +74,6 @@ export default function ProductPage({
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
       handleSummarize();
-      setInputText("");
     }
   };
 
@@ -90,8 +104,8 @@ export default function ProductPage({
       <p className="text-lg/10 mb-8">
         <strong>Powered by Dify. !</strong>
         <br></br>
-        Offer the best AI generated summary.<br></br>
-        Get started by typing in some text below and submit!
+        Offer the best AI generated answer.<br></br>
+        Get started by typing in some text below and submit !
       </p>
       <div
         className="container flex flex-col items-end justify-start max-w-2xl h-full"

@@ -26,7 +26,9 @@ export default function RootLayout({
             <li>
               <Link href="/products">Products</Link>
             </li>
-            <li>About</li>
+            <li>
+              <Link href="/document">Document</Link>
+            </li>
           </ul>
           <Link
             href="/products"
@@ -37,19 +39,31 @@ export default function RootLayout({
         </header>
         {children}
         <footer className="shadow-lg">
-          <div className="flex flex-row items-start justify-end gap-32 p-4 mt-8">
+          <div className="flex flex-row items-start justify-center gap-32 p-4 mt-8">
             <div className="flex flex-col text-left justify-start p-4">
               <h3 className="font-semibold">Products</h3>
               <ul>
-                <li>Summarize Text</li>
-                <li>Analyze Sentiment</li>
-                <li>Extract Keywords</li>
+                <li>
+                  <Link href="/products/summarize-text">Summarize Text</Link>
+                </li>
+                <li>
+                  <Link href="/products/analyze-sentiment">
+                    Analyze Sentiment
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/products/extract-keywords">
+                    Extract Keywords
+                  </Link>
+                </li>
               </ul>
             </div>
             <div className="flex flex-col text-left justify-start p-4">
-              <h3 className="font-semibold">About</h3>
+              <h3 className="font-semibold">APIs</h3>
               <ul>
-                <li>Author</li>
+                <li>
+                  <Link href="/document">Documents</Link>
+                </li>
               </ul>
             </div>
           </div>

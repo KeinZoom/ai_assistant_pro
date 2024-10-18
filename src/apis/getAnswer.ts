@@ -3,6 +3,7 @@ import request from "@/utils/http";
 export type QueryConfig = {
   inputText: string;
   path: string;
+  pKey: string;
 };
 
 export type ResType = {
@@ -18,6 +19,7 @@ export type ResType = {
 export async function getAnswer({
   inputText,
   path,
+  pKey,
 }: QueryConfig): Promise<ResType> {
   const body = {
     inputs: {
@@ -30,9 +32,11 @@ export async function getAnswer({
     const res = await request.post(path, JSON.stringify(body), {
       headers: {
         "Content-Type": "application/json",
+        Authorization: pKey,
       },
     });
     if (res && res.data) {
+      console.log(res);
       return res.data;
     }
     throw new Error("No response received.");

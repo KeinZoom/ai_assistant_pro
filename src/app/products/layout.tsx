@@ -1,23 +1,11 @@
 "use client";
-import React from "react";
+import React, { Suspense } from "react";
 import Link from "next/link";
 import classNames from "classnames";
 import { usePathname } from "next/navigation";
+import productIndex from "./productIndex";
 
-const tabItems = [
-  {
-    key: "Summarize",
-    path: "/products/summarize",
-  },
-  {
-    key: "Analyze Sentiment",
-    path: "/products/analyze-sentiment",
-  },
-  {
-    key: "Extract Keywords",
-    path: "/products/extract-keywords",
-  },
-];
+const tabItems = productIndex;
 
 export default function ProductsLayout({
   children,
@@ -43,7 +31,9 @@ export default function ProductsLayout({
           </Link>
         ))}
       </nav>
-      <div className="w-full flex-grow">{children}</div>
+      <div className="w-full flex-grow">
+        <Suspense>{children}</Suspense>
+      </div>
     </div>
   );
 }
